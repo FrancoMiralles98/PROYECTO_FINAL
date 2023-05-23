@@ -230,7 +230,7 @@ export default class ProductoClass {
         let message = '' 
 
         if(filtro.stock == 0){
-            console.log("llega aca");
+            
             return {message:'No se puede agregar mas, insuficiente stock!'}
         }
         

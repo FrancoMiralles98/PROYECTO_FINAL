@@ -4,6 +4,9 @@ import { createHash, isValidPassword } from "../../util.js"
 
 export default class UsuarioClass{
 
+
+    
+
     getUsuarios = async()=>{
         const result = await usuariomodel.find()
         return result 

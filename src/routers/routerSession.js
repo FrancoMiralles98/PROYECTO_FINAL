@@ -120,7 +120,7 @@ routersession.get('/perfil', passport.authenticate('jwt'), async(req,res)=>{
     let user = userp
    req.session.user = req.user
    req.session.user.token = req.cookies.cookieToken
-    user.p = req.session.user.rol == 'user'? false : true
+    user.p = req.session.user.rol == config.user_status1 ? false : true
     
     res.render('perfil', {user})
 })
