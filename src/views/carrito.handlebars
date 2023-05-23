@@ -1,0 +1,29 @@
+<a href="/">Inicio</a>
+
+<h3>Carrito id:{{id}} </h3>
+
+
+{{#if id }}
+<h4>Productos:</h4>
+{{#each productos}}
+    <section class="productos-carrito">
+  <span>codigo:</span>  <span>{{this.codigo}}</span> ||
+  <span>cantidad:</span>  <span>{{this.cantidad}}</span> ||
+  <span>precio:</span> <span>{{this.precio}}</span>
+   <a class="a"href="/carrito/agregar/{{this.codigo}}/">Agregar</a> <a class="a"href="/carrito/sacar/{{this.codigo}}/{{id}}" >Sacar</a>
+    </section>
+    <br><br>
+{{/each}}
+    {{/if}}
+<br>
+{{#if descuento}}
+<span>total: </span><span class="tachado">$ {{this.total}}</span> <span class="descuento"> $ {{this.descuento}}</span> <span class="descuento">(%5 off, descuento premium!)</span>
+{{else}}
+<span>total: $ {{this.total}}</span>
+{{/if}}
+<br><br><br>
+{{#if this.length}}
+<a href="/ticket/compra/{{id}}"><button>Finalizar comprar</button></a>
+{{/if}}
+
+

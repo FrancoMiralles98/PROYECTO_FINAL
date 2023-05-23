@@ -1,0 +1,23 @@
+
+
+{{#if i.error}}
+<h2>STATUS: {{i.status}} en "{{i.url}}"</h2>
+<hr>
+Error: {{i.error}}
+<br><br>
+<a href="/">Volver</a>
+{{else}}
+
+<h3>{{i.message}}</h3>
+{{#if i.url}}
+<a href={{i.url}}>
+<button>Volver</button>
+</a>
+{{/if}}
+<br>
+<br>
+<a href="/">
+    <button>Inicio</button>
+</a>
+
+{{/if}}

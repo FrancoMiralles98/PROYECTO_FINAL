@@ -1,0 +1,30 @@
+
+<a href="/">Inicio</a> <a href="/session/perfil">Volver al perfil</a>  <a href="/api/comunity">Productos de la comunidad</a><br><br> 
+
+
+{{#if result.long}}
+
+{{#if result}}
+        <h3>Esta es tu lista de productos creados :</h3> <br><br>
+        {{#each result}}
+        <span>Modelo: {{this.modelo}} </span> <span>Precio: {{this.precio}}</span>
+            <br>
+            <span >Marca: {{this.marca}}</span> <br>
+             <span>Codigo:{{this.codigo}}</span> <br>
+             <span>Stock: {{this.stock}}</span>
+            <br><br>
+            <form action="/api/personalProduct/delete" method="get">
+            <input type="hidden" name="code" value="{{this.codigo}}">
+            <button type="submit">Eliminar</button>
+            </form>
+            <hr>
+
+        {{/each}}
+{{/if}}
+
+{{else}}
+
+    <h3>Aun no tienes productos creados, prueba creando uno!</h3> <a href="/api/comunity/renderCreate">Crear producto</a>
+
+
+{{/if}}

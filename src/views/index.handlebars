@@ -1,0 +1,139 @@
+<section class="barra_flex-container">
+<a  href="/" >Inicio </a> 
+<a  href="/session/iniciarsesion">Iniciar sesion</a>
+{{#if i}} 
+<a  href="/session/logout">Finalizar sesion</a>
+{{/if}}
+<a  href="/session/registrar">Registrarse</a>
+{{#if i}}
+<a  href="/carrito/listado/{{i.carritoId}}">Mi carrito</a>
+{{/if}}
+
+{{#if i}}
+<a  href="/session/perfil">perfil</a>
+{{/if}}
+</section>
+
+    <section class="flex-container-titulo" >
+ <h3 class="titulo-titulo">CUERDALIN</h3>
+ </section>
+{{#if i}}
+
+<h3>Bienvenido: {{i.usuario}}</h3>
+
+    <section class="flex-container-premium">
+    {{#if i.u}}
+<a href="/session/getP">
+<h4>Hacete Premium y disfruta sus beneficios! </h4></a>
+    {{else}}
+    <a href="/api/comunity">
+        <h4>Comunidad premium</h4>
+    </a>
+    
+    {{/if}}
+    </section>
+    
+{{/if}} 
+
+        {{#if result.isValid}}
+<section class="flex-container-productos-on">
+
+        <table >
+            <div class="productos-titulo">
+            <thead  >
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Codigo</th>
+                </tr>
+            </thead>
+            </div>
+            <tbody>
+                {{#if result.userOn}}
+                
+                    {{#each result.docs }}
+                        <tr class="productos-descrip" >
+                                <td > {{this.marca}} </td>
+                                <td> {{this.modelo}}</td>
+                                <td > $ {{this.precio}}</td>
+                                <td>  {{this.stock}}</td>
+                                <td>  {{this.codigo}}</td>
+                                
+                            
+                                
+                                <div class="agregar">
+                                <form action="/api/agregarProducto" method="get">
+                                <input type="hidden" name="codigo" value="{{this.codigo}}">
+                                <td class="input-producto"><input  value="Agregar" type="submit"></input></td>
+                                </form>
+                                </div>
+                                
+                        </tr>
+
+                    {{/each}}
+    
+                   {{else}}
+                  
+                             {{#each result.docs }}
+                        <tr class="productos-descrip">
+                                <td> {{this.marca}} </td>
+                                <td> {{this.modelo}}</td>
+                                <td> $ {{this.precio}}</td>
+                                <td>  {{this.stock}}</td>
+                                <td>  {{this.codigo}}</td>
+                                    
+                        </tr>
+                        {{/each}}
+                        
+                   {{/if}}
+            </tbody>
+        </table>
+        </section>
+            
+
+        <br>
+        <section class="floor_flex-container">
+            <p class="floor_caja1">pagina: {{result.page}}/{{result.totalPages}}</p>
+            {{#if result.hasPrevPage}}
+        <a class="floor_caja2" href="{{result.prevLink}}">Anterior</a>
+            {{/if}}
+            {{#if result.hasNextPage}}
+        <a class="floor_caja3" href="{{result.nextLink}}">Siguiente</a>
+            {{/if}}
+            </section>
+        <br>
+        <section class="flex-container-ordenar">
+        <span>Ordenar: </span><a name="order" href="{{result.asc}}">Ascendente</a> / <a name="order" href="{{result.desc}}">Descendente</a>
+        </section>
+            <br><br>
+
+    <form >
+       Nombre: <input name="query" type="text"> <input value="Buscar" type="submit">
+
+        </form>
+        <br>
+    {{#if i}}
+    <span>Aprovecha y llevate nos productos a un precio excelente y de alta calidad</span>
+    {{else}}
+    <span>Create una cuenta y disfruta de nuestros productos a un precio excelente!</span>
+    {{/if}}
+                    {{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/index.js"></script>

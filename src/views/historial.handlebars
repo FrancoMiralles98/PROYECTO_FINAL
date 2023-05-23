@@ -1,0 +1,27 @@
+<a href="/">Inicio</a> <a href="/session/perfil">Perfil</a> <br><br>
+<h2>Historial de compras:</h2>
+
+
+{{#if result.largo}}
+    {{#each result.docs}}
+            <p>Fecha: {{this.fecha}}</p>
+            <p>Código de compra : {{this.codigo}}</p>
+    
+            {{#if productos}}
+            <p>Productos:</p>
+            <ul>
+                {{#each productos}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+            {{/if}}
+    <p>Monto total: $ {{this.monto}}</p>
+    <hr>    
+    
+
+    {{/each}}
+{{else}}
+
+    <h3>Aun no has comprado ningun producto, date el gusto ;) <a href="/"> Productos</a></h3>
+
+{{/if}}

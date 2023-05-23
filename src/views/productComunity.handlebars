@@ -1,0 +1,89 @@
+<a class="a" href="/">Inicio</a>  <a  class="a" href="/session/perfil">Perfil</a>  <a  class="a" href="/carrito/listado/{{user.carritoId}}">Carrito</a><br><br>  
+
+<h2>CUERDALIN</h2>
+
+
+<h3>Bienvenido a los productos de la comunidad {{user.usuario}}!</h3>
+
+
+<h4>Crea tu producto y compartelo con la comunidad!</h4> <span><a  class="a" href="/api/comunity/renderCreate">Crear un producto</a></span>
+
+
+
+<h3>Productos de la comunidad:</h3>
+
+<form >
+<a  class="a"href="/api/comunity">Todos</a>    
+        | Filtrar: <input name="query" type="text"> <input value="Buscar" type="submit">
+
+        </form>
+        <br><br>
+{{#if result}}
+    {{#if result.dev}}
+    {{#each result.docs}}
+        {{#if this.stock}}
+            <section class="flex-container-productos-comunity">
+            <span>Modelo: {{this.modelo}} </span> <span>Precio: {{this.precio}}</span>
+            <br>
+            <span >Marca: {{this.marca}}</span> <br>
+            <strong><span >Creador: {{this.createUser}}</span></strong> <span>Codigo:{{this.codigo}}</span> <br>
+            <span>Stock: {{this.stock}}</span>
+            </section>
+            <section class="flex-container-boton-comunity">
+            <form action="/api/personalProduct/delete" method="get">
+            <input type="hidden" name="code" value="{{this.codigo}}">
+            <button class="button-comunity" type="submit">Eliminar</button>
+            </form>
+            
+            <form  action="/api/renderProductEdit" method="get">
+            <input type="hidden" name="code" value="{{this.codigo}}">
+            <button class="button-comunity2" type="submit"> Editar</button>
+           </form>
+           
+           <form action="/api/agregarProductoComunity" method="get">
+            <input type="hidden" value="{{this.codigo}}" name="codigo">
+            <input type="submit" value="Agregar">
+           </form>
+            
+           </section>
+            <hr width="300px" align="left">
+            {{/if}}
+    {{/each}}
+
+    {{else}}
+    {{#each result.docs}}
+    <section class="flex-container-productos-comunity">
+            <span>Modelo: {{this.modelo}} </span> <span>Precio: {{this.precio}}</span>
+            <br>
+            <span >Marca: {{this.marca}}</span> <br>
+            <strong><span >Creador: {{this.createUser}}</span></strong> <span>Codigo:{{this.codigo}}</span><br>
+            <span>Stock: {{this.stock}}</span>
+            </section>
+
+            <section class="flex-container-boton-comunity" >
+           <form action="/api/agregarProductoComunity" method="get">
+            <input type="hidden" value="{{this.codigo}}" name="codigo">
+            <input type="submit" value="Agregar">
+           </form>
+           </section>
+            
+            <hr width="300px" align="left">
+        {{/each}}
+    {{/if}}
+
+
+
+
+    <section class="flex-container-pagina-comunity">
+    {{#if result.hasPrevPage}}
+        <a  class="a" href="{{result.prevPage}}">Anterior</a>
+    {{/if}}
+
+    {{#if result.hasNextPage}}
+        <a class="a" href="{{result.nextPage}}">Siguiente</a>
+    {{/if}}
+    <br>
+    <p>pagina:{{result.page}}/{{result.totalPages}}</p>
+    </section>
+{{/if}}
+

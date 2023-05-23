@@ -1,0 +1,18 @@
+<a href="/api/comunity">Volver</a>
+<br>
+<h2>Editor de productos</h2>
+
+
+<form action="/api/productEdit" method="post">
+<h4>Valor anterior de <strong>Marca: {{product.marca}}</strong></h4>
+Nuevo valor: <input type="text" name="marca" id="">
+<br><br>
+<h4>Valor anterior de <strong>Modelo: {{product.modelo}}</strong></h4>
+Nuevo valor: <input type="text" name="modelo" id="">
+<br><br>
+<h4>Valor anterior de <strong>Precio: {{product.precio}}</strong></h4>
+Nuevo valor: <input type="number" name="precio" id="">
+<br><br>
+<input type="hidden" name="codigo" value={{product.codigo}}>
+<input type="submit" value="Actualizar">
+</form>

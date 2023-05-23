@@ -1,0 +1,20 @@
+<a class="a" href="/">Inicio</a> <a class="a" href="/session/logout">Cerrar sesion</a> <br><br> 
+<h1>PERFIL</h1>
+
+{{#if user}}
+<img src="{{user.imgPerfil}}" class="photo-pefil" alt=""> <br>
+<a  class="a" href="/usuario/api/configUser">Editar perfil</a> <br><br>
+<span>Usuario: {{user.usuario}}</span> <br><br>
+<span>Email: {{user.email}}</span> <br><br>
+
+<br><br>
+
+
+
+<a class="a" href="/carrito/listado/{{user.carritoId}}">Carrito</a> 
+{{#if user.p}}
+<a class="a" href="/api/personalProduct">Lista de productos</a>
+{{/if}}
+<a class="a"  href="/usuario/historial">Historial de compras</a>
+
+{{/if}}

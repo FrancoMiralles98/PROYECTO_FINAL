@@ -1,0 +1,215 @@
+
+.flex-container {
+    background-color: burlywood;
+    display: flex;
+    
+    border: 1px solid black;
+    margin: 0% auto;
+
+}
+
+
+
+.barra_flex-container{
+   
+    display: flex;
+    width: 100%;
+    margin-left: 5px;
+    
+    
+}
+
+
+.barra_flex-container > a{
+    
+    text-decoration: none;
+    margin: 3px 3px;
+    color: black;
+    
+}
+
+.barra_flex-container > a:hover{
+    text-decoration: underline;
+    color: brown;
+}
+
+.flex-container-titulo{
+   
+    display: flex;
+    width: 100%;
+    
+    
+    
+}
+
+.titulo-titulo{
+    
+    margin-left: 150px;
+}
+
+.flex-container-premium{
+    
+    display: flex;
+    width: auto;
+    
+
+}
+.flex-container-premium > a{
+    text-decoration: none;
+    color: slateblue;
+}
+
+.flex-container-premium > a:hover{
+    color: crimson;
+}
+
+
+
+
+.floor_flex-container{
+  
+    display: flex;
+    width: 100%;
+    
+    
+}
+
+.floor_flex-container >a:hover{
+
+  text-decoration: underline;
+  color: brown;
+}
+
+
+.floor_caja1{
+
+    color: black;
+    margin: 4px 54px;
+    
+
+    
+    
+}
+.floor_caja2{
+    text-decoration: none;
+    margin: 4px 4px;
+    color: black;
+    
+}
+
+.floor_caja3{
+    text-decoration: none;
+    margin: 4px ;
+    color: black;
+    
+}
+
+.flex-container-productos-on{
+  
+    display: flex;
+    
+    
+    min-height: 300px;
+}
+
+.productos-descrip{
+    
+    text-align: center;
+    
+}
+
+.input-producto{
+    width: 100px;
+   
+}
+
+.flex-container-ordenar{
+    margin-left: 7px;
+    text-decoration: none;
+}
+
+.flex-container-ordenar > a{
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.flex-container-ordenar > a:hover{
+    text-decoration: underline;
+    color: brown;
+    text-align: left;
+}
+.flex-container-boton-comunity{
+   
+    display: flex;
+    padding: 8px 1px 1px 1px;
+    
+}
+
+.button-comunity{
+    
+    margin-left: 5px;
+}
+
+.button-comunity2{
+    
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.a{
+    text-decoration: underline;
+    color: black;
+}
+
+.a:hover{
+    text-decoration: underline;
+    color: brown;
+}
+
+.flex-container-productos-comunity{
+    
+    display: block;
+    padding-left: 6px;
+}
+
+.flex-container-productos-comunity > span{
+    padding-right: 10px;
+   
+    
+}
+
+.flex-container-productos-comunity > strong{
+    padding-right: 10px;
+}
+
+.flex-container-pagina-comunity{
+    padding-left: 35px;
+    display: flex;
+}
+
+.flex-container-pagina-comunity > a{
+    padding: 3px;
+}
+
+.photo-pefil{
+    max-height: 100px;
+}
+
+.tachado{
+    color: red;
+    text-decoration: line-through;
+}
+
+.descuento{
+    color: cornflowerblue;
+}
+
+.productos-carrito{
+   text-decoration: solid;
+}
+
+.productos-carrito > a{
+    padding-left: 5px;
+}
+

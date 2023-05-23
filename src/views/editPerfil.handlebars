@@ -1,0 +1,20 @@
+<a class="a" href="/">Inicio</a>  <a class="a" href="/session/perfil">Perfil</a><br><br>
+<h3>Cambiar foto de perfil</h3>
+
+<img src={{user.imgPerfil}} class="photo-pefil"alt=""><br>
+<form action="/usuario//api/cambiarFoto" method="post" enctype="multipart/form-data">
+<input type="file" name="file">
+<input type="submit" value="Cambiar">
+</form>
+<br><br>
+<h3>Cambiar contraseña</h3>
+
+<form action="/usuario/api/actualizarPassword" method="post">
+   <p>Contraseña actual:</p> <input type="password" name="actualpassword">
+   <br><br>
+   <p>Nueva contraseña:</p> <input type="password" name="nuevacontraseña">
+   <br><br>
+   <p>Repita la nueva contraseña:</p> <input type="password" name="nuevacontraseña2">
+<br><br>
+    <input type="submit" value="Cambiar">
+</form>

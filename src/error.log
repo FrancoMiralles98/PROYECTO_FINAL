@@ -1,0 +1,47 @@
+fatal: ERROR FATAL
+error: Esto es un error
+warning: Esto es una advertencia
+fatal: ERROR FATAL
+error: Esto es un error
+warning: Esto es una advertencia
+fatal: ERROR FATAL
+error: Esto es un error
+warning: Esto es una advertencia
+error: Error al obtener el carrito id:1, en GET /1, 19:33:17
+error: Error al obtener el carrito id:hola, en GET /hola, 19:34:15
+error: Error al obtener el carrito id:hola, en GET /hola, 19:34:53
+error: Error al obtener el carrito id:hola, en GET /hola, 19:36:00
+error: Error al obtener el carrito id:hola, en GET /hola, 19:36:07
+error: Error al obtener el carrito id:hola, en GET /hola, 19:37:23
+error: Error al obtener el carrito id:hola, en GET /hola, 19:37:38
+error: Error al obtener el carrito id:hola, en GET /hola, 22/5/2023
+error: Error al obtener el carrito id:hola, en GET /hola, 22/5/2023, 19:40:37
+error: Error al obtener el carrito id:1, en GET /1, 22/5/2023, 19:44:56
+error: Error al obtener el carrito id:65, en GET /65, 22/5/2023, 19:47:18
+error: Error al eliminar los productos del carrito id: 12321415134124, en DELETE /api/12321415134124, 22/5/2023, 20:42:05
+error: Error al eliminar los productos del carrito id: 123, en DELETE /api/123, 22/5/2023, 20:42:35
+error: Error al eliminar los productos del carrito id: 1, en DELETE /api/1, 22/5/2023, 20:48:40
+error: Error al eliminar los productos del carrito id: 1, en DELETE /api/1, 22/5/2023, 20:49:23
+error: Error al eliminar los productos del carrito id: 1, en DELETE /api/1, 22/5/2023, 20:50:36
+error: Error al buscar el producto wda34413134143 , en GET /api/findProduct, 22/5/2023, 22:16:19
+error: Error al buscar el producto wda34413134143 , en GET /api/findProduct, 22/5/2023, 22:17:23
+error: Error al crear el producto , en POST /api, 22/5/2023, 22:39:01
+error: Error al editar el producto , en GET /api/64093a4d652b1c7834c3efcba, 23/5/2023, 12:27:06
+error: Error al obtener el ticket "64093725861fbdead2c5519a" el la DB , en GET /api/64093725861fbdead2c5519a, 23/5/2023, 12:37:01
+error: Error al obtener el ticket "123." el la DB , en GET /api/123., 23/5/2023, 12:40:44
+error: Error al obtener el ticket "user" el la DB , en GET /api/user, 23/5/2023, 12:41:44
+error: Error al obtener el ticket del usuario "hola" el la DB , en GET /api/user/hola, 23/5/2023, 12:53:02
+error: Error al obtener el ticket del usuario "hola" el la DB , en GET /api/user/hola, 23/5/2023, 12:53:40
+error: Error al obtener el ticket del usuario "1" el la DB , en GET /api/user/1, 23/5/2023, 12:57:48
+error: Error al crear el ticket del usuario "[object Object]", carrito12 , en GET /compra/12, 23/5/2023, 13:13:30
+error: Error al agreagar el producto codigo CA111C , en GET /api/agregarProducto?codigo=CA111C, 23/5/2023, 13:32:13
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:33:17
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:33:35
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:36:19
+error: Error al agreagar el producto codigo CA111C , en GET /api/agregarProducto?codigo=CA111C, 23/5/2023, 13:36:29
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:37:31
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:39:09
+error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto?codigo=CR993Q, 23/5/2023, 13:45:29
+error: Error al obtener los usuario 1 de la DB, en GET /api/user/1, 23/5/2023, 14:06:52
+error: Error al cargar la imagen , en POST /api/cambiarFoto, 23/5/2023, 14:35:20
+error: Error al cargar la imagen , en POST /api/cambiarFoto, 23/5/2023, 14:38:11

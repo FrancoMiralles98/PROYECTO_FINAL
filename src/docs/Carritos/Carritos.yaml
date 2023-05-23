@@ -1,0 +1,49 @@
+paths:
+  /carritos:
+    get:
+      summary: Obtiene todos los carritos
+      tags:
+        - Carritos
+      responses:
+        "200":
+          descriptions: Envio de la lista de carritos
+        "500":
+          descriptions: Error al cargar la lista de carritos
+
+  /carritos/{id}:
+    get:
+      summary: Obtiene un carrito especifico
+      tags:
+        - Carritos
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Id del carrito que se solicita
+        schema:
+          type: Number
+        responses:
+          "200":
+            description: Carrito encontrado
+          "500":
+            description: No se pudo obtener el carrito solicitado
+            
+components:
+  schemas:
+    Carrito:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        id:
+          type: String
+          description: Id autogenerado por la DB
+        productos:
+          type: Array
+          description: Contiene la lista de productos que agrego el usuario
+        example: 
+          _id: neoasfno12302131nnfwnfo123
+          id: 3
+          productos: [codigo: 'DAW3', cantidad: '2', precio: '12000']
+        
