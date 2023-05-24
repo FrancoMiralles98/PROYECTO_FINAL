@@ -1,0 +1,101 @@
+paths:
+  /iniciarsesion:
+    get:
+      summary: renderiza el inicio de sesion para escribir los datos
+      tags:
+        - Session
+  
+    post:
+      summary: Ejecuta toda la logica para iniciar sesion , pasando por passport para crear una cookie y validar el token, y si el usuario ya esta registrado
+      tags:
+        - Session
+      parameters:
+      - name: email 
+        in: req.body
+        required: true
+        description: email del usuario
+      - name: password
+        in: req.body
+        required: true
+        description: contraseña del usuario
+
+  /registrar:
+    get:
+      summary: renderiza el registro para ingresar los datos
+      tags:
+        - Session
+    post:
+      summary: Ejecuta toda la logica para registrarse y poder una cuenta en la base de datos, vereficara que el usuario o email no esten ya usados
+      tags:
+        - Session
+      parameters:
+      - name: email 
+        in: req.body
+        required: true
+        description: email del usuario
+      - name: password
+        in: req.body
+        required: true
+        description: contraseña del usuario
+      - name: usuario
+        in: req.body
+        required: true
+        description: nombre del usuario
+
+  /logout:
+    get:
+      summary: Boton para finalizar sesion, elimina la coockie del token y actualiza la ultima conexion del usuario
+      tags:
+        - Session
+  
+  /login-google:
+    get:
+      summary: funcion para poder registrarse mediante una cuenta de google
+  
+  /google:
+    get:
+      summary: redirecciona la cuenta ya logeada al menu de inicio
+      tags:
+        - Session
+  
+  /perfil:
+    get:
+      summary: verifica el usuario , obtiene todos los datos y renderiza el perfil
+      tags: 
+        - Session
+
+  /vereamil:
+    get:
+      summary: renderiza el apartado de vereficacion de email para recuperar la contraseña
+      tags:
+        - Session
+
+  /mailing:
+    post:
+      summary: ejecuta toda la logica, verifica que el usuario tenga el email correspondiente y luego se ejecuta la funcion de mailing y envia un link al email para recuperar la contraseña, (esta puesto mi email)
+      tags:
+        - Session
+
+  /psw:
+    get:
+      summary: solo es un renderizado diciendo al usuario que se envio el emial para recuperar la contraseña
+  
+  /verify:
+    post:
+      summary: renderizado donde puedes introducir nuevamente una contraseña
+      tags:
+        - Session
+  
+  /getP:
+    get:
+      summary: Renderiza los beneficios de ser premium
+      tags:
+        - Session
+  
+  /doneP:
+    get:
+      summary: Hace la logica para actualizar el rol del usuario a premium
+      tags:
+        - Session
+  
+

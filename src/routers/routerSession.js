@@ -23,10 +23,7 @@ const transport = nodemailer.createTransport({
         pass: config.nodemailer_pass
     }
 })
-
-
-
-
+   
 
 routersession.get('/iniciarsesion', (req,res)=>{
     res.render('login')
@@ -141,8 +138,8 @@ routersession.post('/mailing', async (req,res)=>{
         }
    let verificationLink = "http://localhost:8080/session/psw"
     const result = await transport.sendMail({
-        from: email,
-        to: email,
+        from: config.nodemailer_user,
+        to: config.nodemailer_user,
         subject: 'Restablecer la contraseña',
         html: `
             <a href="${verificationLink}">Haga click aqui </a>`
