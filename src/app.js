@@ -47,7 +47,7 @@ const swaggerOptions = {
     definition:{
         openapi: '3.0.1',
         info:{
-            title: 'Documentacion',
+            title: 'Para usar los rutas "api" usar el user 1 que tiene rol admin',
             descripcion: 'Descripcion'
         }
     },

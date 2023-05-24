@@ -45,3 +45,9 @@ error: Error al agreagar el producto codigo CR993Q , en GET /api/agregarProducto
 error: Error al obtener los usuario 1 de la DB, en GET /api/user/1, 23/5/2023, 14:06:52
 error: Error al cargar la imagen , en POST /api/cambiarFoto, 23/5/2023, 14:35:20
 error: Error al cargar la imagen , en POST /api/cambiarFoto, 23/5/2023, 14:38:11
+error: Error al obtener los carritos de la DB, en GET /, 23/5/2023, 20:22:00
+error: Error al obtener los carritos de la DB, en GET /, 23/5/2023, 20:27:01
+error: Error al obtener el carrito id::id, en GET /:id, 23/5/2023, 20:36:35
+error: Error al obtener el carrito id:1, en GET /1, 23/5/2023, 20:51:25
+error: Error al obtener el carrito id:2, en GET /2, 23/5/2023, 20:51:48
+error: Error al obtener el carrito id:{:id}, en GET /%7B:id%7D, 23/5/2023, 20:55:37

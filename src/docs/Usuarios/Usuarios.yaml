@@ -1,0 +1,114 @@
+paths:
+  /usuario/api/:
+    get:
+      summary: Obtienes la lista de todos los usuarios de la base de datos
+      tags:
+        - Usuario
+  /api/user/{id}:
+    get:
+      summary: Obtener el usuario por id de mongo
+      tags:
+        - Usuario
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: id del usuario generado por mongo
+        schema:
+          $type: String
+
+  /api/getPremium/:
+    get:
+      summary: Obtienes los usuarios que tiene como rol premium
+      tags:
+        - Usuario
+  
+  /api/delete/{id}:
+    delete:
+      summary: Eliminas al usuario selecionado de la base de datos
+      tags:
+        - Usuario
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: id auto generado por mongo para buscar el usuario en la base de datos
+  
+  /historial:
+    get:
+      summary: obtienes el historial de compras del usuario
+      tags:
+        - Usuario
+      
+  /api/configUser:
+    get:
+      summary: Renderiza la configuracion del usuario
+      tags:
+        - Usuario
+  
+  /api/cambiarFoto:
+    post:
+      summary: actualiza la foto de perfil mediante multer
+      tags:
+        - Usuario
+      parameters:
+      - name: file
+        in: req.body
+        required: true
+        description: se agrega la imagen y se guarda en la carpeta static public/img/perfil
+
+  /api/actualizarPassword:
+    post:
+      summary: se actualiza la contraseña del usuario desde la configuracion de usuario
+      tags:
+        - Usuario
+      parameters:
+      - name: password
+        in: req.body
+        required: true
+        description: si los campos son verdaderos , es decir, que escribio bien su contraseña y la nueva contraseña la escribio bien 2 veces , entonces se actualizara la contraseña
+
+
+
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        usuario:
+          type: String
+          description: Nombre del usuario
+        contraseña:
+          type: String
+          description: contraseña del usuario (que luego se hashea)
+        email:
+          type: String
+          description: email del usuario
+        rol:
+          type: String
+          description: rol del usuario en la pagina web, por defualt es user
+        carritoId:
+          type: Number
+          description: carrito que se le asigna al usuario a la hora de registrarse , se genera automaticamente 
+        lastConnection: 
+          type: String
+          description: ultima conexion del usuario
+        totalConection:
+          type: Number 
+          description: veces totales que se conecto el usuario
+        imgPerfil:
+          type: String
+          description: imagen del usuario de perfil, por default uno ya descargado desde la carpeta public
+      example:
+          _id: diaojwdiijojoij21039021da
+          usuario: Hernesto
+          contraseña: mdklwandmwanfoe
+          email: hernesto@gmail.com
+          rol: user
+          carritoId: 12
+          lasConnection: '17/06/2022 18:32:47'
+          totalConection: 20
+          imgPerfil: /img/perfil_user.icon.png

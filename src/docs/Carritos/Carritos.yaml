@@ -1,33 +1,141 @@
+
+info:
+  title: PAra ejecutar todos los comandos de api  usar el user 1 que tiene rol de admin
+
+
 paths:
-  /carritos:
+  /carrito/:
     get:
       summary: Obtiene todos los carritos
       tags:
-        - Carritos
+        - Carrito
       responses:
         "200":
           descriptions: Envio de la lista de carritos
         "500":
           descriptions: Error al cargar la lista de carritos
-
-  /carritos/{id}:
-    get:
-      summary: Obtiene un carrito especifico
+    post:
+      summary: Crea el carrito,(se hace automaticamente cuando se genera el usuario)
       tags:
-        - Carritos
+        - Carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/postCarrito'
+      
+
+  /carrito/{id}:
+    get:
+      summary: Obtiene un carrito especifico con el numero id
+      tags:
+        - Carrito
       parameters:
       - name: id
         in: path
         required: true
         description: Id del carrito que se solicita
         schema:
-          type: Number
+          $type: Number
         responses:
           "200":
             description: Carrito encontrado
           "500":
             description: No se pudo obtener el carrito solicitado
+  
+  /api/{cid}/products/{pid}:
+    delete:
+      summary: Elimina un producto del array de productos  del carrito 
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito que se solicita
+        schema:
+          $type: Number
+      - name: pid
+        in: path
+        required: true
+        description: Codigo del producto que se solicita
+        schema:
+          $type: String
+      responses:
+          "200":
+            description: Se ha eliminado el producto del carito
+          "500":
+            description: No se pudo obtener el carrito solicitado
+  
+  /api/{cid}:
+    delete:
+      summary: Elimina todos los  productos del array de productos  del carrito 
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito que se solicita
+        schema:
+          $type: Number
+      responses:
+          "200":
+            description: Se ha eliminado todos los productos del carito
+          "500":
+            description: No se pudo obtener el carrito solicitado
             
+  /agregar/{cprod}:
+    get:
+      summary: Agrega un producto seleccionado al carrito,no se agregara si supera el limite de stock o quiere agregar producto sin stock de inicio
+      tags:
+        - Carrito
+      parameters:
+      - name: cprod
+        in: path
+        required: true
+        description: codigo del producto al que va a ir el carrito
+        schema:
+          $type: String
+      responses:
+          "200":
+            description: Se ha agreagado el producto al carrito
+          "500":
+            description: No se puede agregar al producto falta de stock, No se puede agreagar superas el limite de stock
+            
+  /sacar/{cprod}:
+    get:
+      summary: Saca un producto seleccionado del carrito, al llegar a 0 de cantidad , se sale del array de productos del carrito
+      tags:
+        - Carrito
+      parameters:
+      - name: cprod
+        in: path
+        required: true
+        description: codigo del producto al que va a ir el carrito
+        schema:
+          $type: String
+      responses:
+          "200":
+            description: Se ha sacado un producto
+          "500":
+            description: No se puede sacar el producto       
+
+  /listado/:cid:
+    get:
+      summary: Renderiza el listado que tiene de productos en su carrito
+      tags:
+        - Carrito
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: codigo del carrito a renderizar
+        schema:
+          $type: Number
+      
+      
 components:
   schemas:
     Carrito:
@@ -38,12 +146,25 @@ components:
           description: Id autogenerado de mongo
         id:
           type: String
-          description: Id autogenerado por la DB
+          description: Id autogenerado por backend (funcion propia)
         productos:
           type: Array
           description: Contiene la lista de productos que agrego el usuario
-        example: 
+      example: 
           _id: neoasfno12302131nnfwnfo123
           id: 3
-          productos: [codigo: 'DAW3', cantidad: '2', precio: '12000']
-        
+          productos: [codigo: 'DAW3', cantidad: '2', precio: '12000']  
+  requestBodies:
+    postCarrito:
+      type: object
+      properties:
+        id:
+          type: Number
+          descripcion: id del carrito
+        productos:
+          type: Array
+          descripcion: Array donde iran los productos almacenados en el carrito
+      example: 
+          _id: neoasfno12302131nnfwnfo123
+          id: 3
+          productos: [codigo: 'DAW3', stock: '2', precio: '12000'] 

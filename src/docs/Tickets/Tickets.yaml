@@ -1,0 +1,74 @@
+paths:
+  /ticket/api:
+    get:
+      summary: Obtiene la lista de todos los tickets
+      tags:
+        - Ticket
+
+  /api/{tid}:
+    get:
+      summary: Obtiene un ticket especifico
+      tags:
+        - Ticket
+      parameters:
+      - name: tid
+        in: path
+        requiered: true
+        description: Id auto generado por mongo para buscar el ticket deseado
+
+  /api/user/{uid}:
+    get:
+      summary: Obtiene un ticket espeficio por usuario
+      tags:
+        - Ticket
+      parameters:
+        - name: uid 
+          in: path
+          requiered: true
+          schema:
+            $type: String
+          description: Nombre del usuario para buscar su ticket   
+
+  /compra/{cid}:
+    get:
+      summary: Realiza toda la logica para generar el ticket con el monto total del carrito y en caso de concretarse la compra se restar el stock de los productos de la cantidad que compro el usuario
+      tags:
+        - Ticket
+      parameters:
+        - name: cid
+          in: path
+          requiered: true
+          description: id del carrito en el cual se finalizara la compra, si se finaliza todos los productos que estaban se quitaran del carrito
+
+
+components:
+  schemas:
+    Ticket:
+      type: object
+      properties:    
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        codigo:
+          type: String
+          description: codigo del ticket que se genera por backend (funcion propia)
+        fecha:
+          type: Date
+          description: fecha en el que se genero la compra
+        productos:
+          type: Array
+          description: lista de los codigos de los productos comprados
+        monto:
+          type: Number
+          description: monto total de la compra
+        usuario:
+          type: String
+          description: usuario quien realizo la compra
+      example:
+         _id: neoasfno12302131nnfwnfo123
+         codigo: DWL13F
+         fecha: '16/09/2022 17:55:33'
+         productos: [DAWDWF,PMFJG]
+         monto: 1203959
+         usuario: German
+

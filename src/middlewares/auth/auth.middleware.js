@@ -32,6 +32,11 @@ export const auth_P = (req,res,next) => {
 }
 
 export const auth_api = (req,res,next)=>{
+        if(!req.session.user){
+            req.logger.info('No hay sesion iniciada')
+        let i = {message: 'Debes iniciar sesion'}
+            return res.render('Errors', {i})
+        }
     if(req.session.user){
 
         if(req.session.user.rol !== config.developer){

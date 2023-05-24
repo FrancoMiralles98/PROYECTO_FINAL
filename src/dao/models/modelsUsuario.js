@@ -10,7 +10,7 @@ const usuarioSchema =  mongoose.Schema({
     lastConnection: String,
     totalConection: {type: Number, default: 0},
     imgPerfil: {type: String , default: '/img/perfil/user_icon.png'},
-    document: {type: String}
+    
     
 })
 

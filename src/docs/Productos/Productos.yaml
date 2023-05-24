@@ -1,0 +1,225 @@
+
+
+paths:
+  /:
+    get:
+      summary: Renderiza tods los productos de la base de datos, de la pagina , no de los productos de los usuarios
+      tags:
+        - Producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/renderProductos'
+        description: este seria un ejemplo de como seria el array que se pasa
+  /api:
+    post:
+      summary: Crea un producto (no hay que insertarle el "_id")
+      tags:
+        - Producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/postCarrito'
+       
+  /mockingProducts:
+    get:
+      summary: Crea una lista de objetos alatorios con la libreria faker   
+      tags:
+        - Producto
+  
+  /api/findProduct:
+    get:
+      summary: Busca el codigo de un producto , tanto de la pagina como la de los usuarios
+      tags:
+        - Producto
+      parameters:
+      - name: code
+        required: true
+        description: codigo del producto, este puede venir tanto de un req.body como de req.query
+        schema:
+          $type: String
+
+  /api/renderProductEdit:
+    get:
+      summary: Renderiza el editor de productos , en este caso el de los usuarios, para actualizar si se quiere la marca,modelo o precio 
+      tags:
+        - Producto
+      parameters:
+      - name: code
+        required: true
+        description: Se necesita el codigo del producto en cuestion que viene por req.query
+
+  /api/productEdit':
+    post:
+      summary: Aca se ejecuta el codigo para actualizar , si es que se hizo, los datos del producto en cuestion
+      tags:
+        - Producto
+      parameters:
+      - name: precio
+        required: false
+        description: No es necesario escribir en todos los campos , si un campo queda vacio tendra el mismo valor que tenia anteriormente, y estos datos se pasan por req.body
+      - name: marca
+        required: false
+      - name: modelo
+        required: false
+  
+  /api/comunity:
+    get:
+      summary: Renderiza el apartado de los usuarios premium y la lista de productos creados por ellos
+      tags:
+        - Producto
+
+  /api/comunity/renderCreate:
+    get:
+      summary: Renderiza el apartado de creacion del producto del usuario
+      tags:
+        - Producto
+  
+  /api/comunity/createProduct:
+    post:
+      summary: Se ejecuta el codigo para crear el producto, los valores se pasan por req.body
+      tags:
+        - Producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/ProductoUser'
+        description: este seria objeto que crea
+  
+  /api/personalProduct:
+    get:
+      summary: Devuelve un array de objetos de los productos creados por el usuario
+      tags:
+        - Producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/ProductoUser'
+  
+  /api/personalProduct/delete:
+    get:
+      summary: URL para borrar un producto creado por el usuario desde su perfil
+      tags:
+        - Producto
+      parameters:
+      - name: code
+        in: req.query
+        description: Se pasa el codigo desde el req.query para buscar el producto en la DB para eliminarlo
+  
+
+  /api/agregarProductoComunity:
+    get:
+      summary: Funcion para agregar un producto creado por un usuario
+      tags:
+        - Producto
+      parameters:
+      - name: codigo
+        in: req.query
+        description: SE agrega al carro, en cado de no haber suficiente stock no se agrega
+      
+  /api/agregarProducto':
+    get:
+      summary: funcion para agregar los productos de la pagina
+      tags:
+        - Producto
+      parameters:
+      - name: codigo
+        in: req.query
+        description: SE agrega al carro, en cado de no haber suficiente stock no se agrega
+    
+
+components:
+  schemas:
+    Producto:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        codigo:
+          type: String
+          description: codigo autogenerado por backend (funcion propia)
+        marca:
+          type: String
+          description: nombre de la marca
+        modelo:
+          type: String
+          description: nombre del modelo
+        stock:
+          type: Number
+          description: cantidad de stock 
+        precio:
+          type: Number
+          description: valor monetario del producto
+      example: 
+          _id: neoasfno12302131nnfwnfo123
+          codigo: ADWDF
+          precio: 12300
+          stock: 8
+          marca: Schecter
+          modelo: Banshee 6
+    ProductoUser:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        codigo:
+          type: String
+          description: codigo autogenerado por backend (funcion propia)
+        marca:
+          type: String
+          description: nombre de la marca
+        modelo:
+          type: String
+          description: nombre del modelo
+        stock:
+          type: Number
+          description: cantidad de stock 
+        precio:
+          type: Number
+          description: valor monetario del producto
+        createUser:
+          type: String
+          description: usuario creador del producto
+      example: 
+          _id: neoasfno12302131nnfwnfo123
+          codigo: ADWDF
+          precio: 12300
+          stock: 8
+          marca: Schecter
+          modelo: Banshee 6
+          createUser: German
+  requestBodies:
+    renderProductos:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado de mongo
+        codigo:
+          type: String
+          description: codigo autogenerado por backend (funcion propia)
+        marca:
+          type: String
+          description: nombre de la marca
+        modelo:
+          type: String
+          description: nombre del modelo
+        stock:
+          type: Number
+          description: cantidad de stock 
+        precio:
+          type: Number
+          description: valor monetario del producto
+      example: [{codigo: DJKAWD, marca: Shecter, modelo: Banshee 6, stock: 8, precio: 123000},
+                {codigo: DJKAWD, marca: Shecter, modelo: Banshee 554, stock: 3, precio: 43211},
+                {codigo: DJKAWD, marca: Gibson, modelo: Banshee 1234, stock: 5, precio: 1232134}]
